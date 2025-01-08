@@ -22,3 +22,37 @@ Voice Conversation Bots with LLM and VoiceVox
 4. Edit openai.api_key
 5. Run and Talk Korean
 6. Exit is input to 'q'
+
+## Tree
+.
+├── libonnxruntime.so.1.13.1 -> onnxruntime/lib/libonnxruntime.so.1.13.1
+├── main.py
+├── onnxruntime
+│   ├── GIT_COMMIT_ID
+│   ├── include
+│   │   ├── cpu_provider_factory.h
+│   │   ├── onnxruntime_c_api.h
+│   │   ├── onnxruntime_cxx_api.h
+│   │   ├── onnxruntime_cxx_inline.h
+│   │   ├── onnxruntime_run_options_config_keys.h
+│   │   ├── onnxruntime_session_options_config_keys.h
+│   │   └── provider_options.h
+│   ├── lib
+│   │   ├── libonnxruntime.so -> libonnxruntime.so.1.13.1
+│   │   └── libonnxruntime.so.1.13.1
+│   ├── LICENSE
+│   ├── Privacy.md
+│   ├── README.md
+│   ├── ThirdPartyNotices.txt
+│   └── VERSION_NUMBER
+├── openjtalk
+│   ├── char.bin
+│   ├── COPYING
+│   ├── left-id.def
+│   ├── matrix.bin
+│   ├── pos-id.def
+│   ├── rewrite.def
+│   ├── right-id.def
+│   ├── sys.dic
+│   └── unk.dic
+└── requirements.txt
