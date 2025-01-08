@@ -27,3 +27,7 @@ Voice Conversation Bots with LLM and VoiceVox
 1. Change from ChatGPT to Langchain
 2. Optimize VoiceVox
 3. Change the console output language to Korean
+
+## Notes
+1. https://hommalab.io/posts/rpi/install-voicevox/
+2. https://qiita.com/ueponx/items/186a7c859b49d996785f
