@@ -1,17 +1,17 @@
 import openai
 import speech_recognition as sr
 import os
-import threading
+import asyncio
 from googletrans import Translator
 from pathlib import Path
 from voicevox_core import VoicevoxCore, METAS
 import simpleaudio as sa
 
 # OpenAI API key setup
-openai.api_key = "YOUR_OPENAI_API_KEY"
+openai.api_key = "OPENAI_API_KEY"
 
 # Initialize VoicevoxCore
-core = VoicevoxCore(open_jtalk_dict_dir=Path("./openjtalk"))
+core = VoicevoxCore(open_jtalk_dict_dir=Path("/path/to/openjtalk_dic"))
 speaker_id = 1  # 1:ずんだもん, 2:四国めたん
 
 def recognize_speech_from_mic(recognizer, microphone):
@@ -36,7 +36,7 @@ def text_to_speech(text, output_file):
 def get_chatgpt_response(prompt):
     """Get response from ChatGPT"""
     response = openai.ChatCompletion.create(
-        model="gpt-4o-mini",
+        model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": prompt}
@@ -44,35 +44,30 @@ def get_chatgpt_response(prompt):
     )
     return response.choices[0].message['content'].strip()
 
-def main():
+async def main():
     recognizer = sr.Recognizer()
     microphone = sr.Microphone()
     translator = Translator()
-
+    
     while True:
-        print("Say something in Korean! (Press 'q' to quit)")
         korean_text = recognize_speech_from_mic(recognizer, microphone)
-        if korean_text.lower() == 'q':
-            print("Exiting...")
-            break
-        print(f"You said: {korean_text}")
+        
+        print(f"\nYou said: {korean_text}")
+        
+        # Translate Korean input to English
+        translated_text = await translator.translate(korean_text, src='ko', dest='en')
+        
+        # Get AI response
+        chatgpt_response = get_chatgpt_response(translated_text.text)
+        
+        # Translate AI response to Korean for text output
+        translated_response_ko = await translator.translate(chatgpt_response, src='en', dest='ko')
+        print("Output:", translated_response_ko.text)
 
-        # Translate Korean input to Japanese
-        translated_text = translator.translate(korean_text, src='ko', dest='ja').text
-
-        # Get ChatGPT response
-        chatgpt_response = get_chatgpt_response(translated_text)
-
-        # Translate ChatGPT response to Japanese
-        translated_response = translator.translate(chatgpt_response, src='en', dest='ja').text
-
-        # Translate ChatGPT response to Korean for text output
-        translated_response_ko = translator.translate(chatgpt_response, src='en', dest='ko').text
-        print("Output:", translated_response_ko)
-
-        # Convert Japanese response to speech
-        text_to_speech(translated_response, "response.wav")
+        # Translate AI response to Japanese for speech output
+        translated_response = await translator.translate(chatgpt_response, src='en', dest='ja')
+        text_to_speech(translated_response.text, "response.wav")
         os.remove("response.wav")
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
