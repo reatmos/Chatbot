@@ -5,28 +5,29 @@ Voice Conversation Bots with LLM and VoiceVox
 
 
 ## Requirements
-- [Open_JTalk](https://open-jtalk.sourceforge.net/)
-- [OnnxRuntime 1.13.1](https://github.com/microsoft/onnxruntime/releases/tag/v1.13.1)
+- [voicevox_core.whl](https://github.com/VOICEVOX/voicevox_core/releases)
+- [open_jtalk_dic_utf](https://sourceforge.net/projects/open-jtalk/files/Dictionary/)
+- [onnxruntime-1.13.1](https://github.com/microsoft/onnxruntime/releases/tag/v1.13.1)
 
 ## Library
-- openai
+- openai==0.28
 - SpeechRecognition
-- googletrans==4.0.0-rc1
-- [voicevox-core](https://github.com/VOICEVOX/voicevox_core) - Install whl over pip
+- pyaudio
+- googletrans
 - simpleaudio
 
 ## How to Run
-1. tar -xvf "Open_JTalk"
-2. Edit open_jtalk_dict_dir Path
-3. ln -s "OnnxRuntime"/lib/libonnxruntime.so.1.13.1
-4. Edit openai.api_key
-5. Run and Talk Korean
-6. Exit is input to 'q'
+1. tar -xvf "open_jtalk_dic_utf"
+2. Edit /path/to/openjtalk_dic to open_jtalk_dic_utf
+3. tar -xvf "onnxruntime-1.13.1"
+4. ln -s "onnxruntime-1.13.1"/lib/libonnxruntime.so.1.13.1
+5. Edit OPENAI_API_KEY to your api key
+6. Run and Talk to Korean
 
 ## Future plans
 1. Change from ChatGPT to Langchain
 2. Optimize VoiceVox
-3. Change the console output language to Korean
+~~3. Change the console output language to Korean~~
 
 ## Notes
 1. https://hommalab.io/posts/rpi/install-voicevox/
