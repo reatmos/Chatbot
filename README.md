@@ -1,7 +1,7 @@
 # Chatbot
 Voice Conversation Bots with LLM and VoiceVox
 
-![Wed  8 Jan 18:32:51 KST 2025](https://github.com/user-attachments/assets/099dd60d-b8ed-4413-8af7-d0ad60727e45)
+![screenshot_04022025_020059](https://github.com/user-attachments/assets/c5369e69-4aa7-4d9c-9c82-1d9ce3853f49)
 
 
 ## Requirements
