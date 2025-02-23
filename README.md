@@ -10,11 +10,7 @@ Voice Conversation Bots with LLM and VoiceVox
 - [onnxruntime-1.13.1](https://github.com/microsoft/onnxruntime/releases/tag/v1.13.1)
 
 ## Library
-- openai==0.28
-- SpeechRecognition
-- pyaudio
-- googletrans
-- simpleaudio
+- pip install openai==0.28 SpeechRecognition pyaudio googletrans simpleaudio
 
 ## How to Run
 1. tar -xvf "open_jtalk_dic_utf"
@@ -32,3 +28,7 @@ Voice Conversation Bots with LLM and VoiceVox
 ## Notes
 1. https://hommalab.io/posts/rpi/install-voicevox/
 2. https://qiita.com/ueponx/items/186a7c859b49d996785f
+
+## And..
+Unable to verify running on Windows due to VoiceVox.
+I only ran on Raspberry Pi.
