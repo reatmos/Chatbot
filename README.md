@@ -30,5 +30,5 @@ Voice Conversation Bots with LLM and VoiceVox
 2. https://qiita.com/ueponx/items/186a7c859b49d996785f
 
 ## And..
-Unable to verify running on Windows due to VoiceVox.
-I only ran on Raspberry Pi.
+- useOllama.py is code using Ollama instead of ChatGPT API.
+- I'm trying many ways to use it without API as much as possible.
